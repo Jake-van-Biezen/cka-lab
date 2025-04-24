@@ -1,5 +1,6 @@
 # utils/kube.py
 import subprocess
+import sys
 import time
 from pathlib import Path
 
@@ -43,3 +44,17 @@ def wait_for_cluster_ready(namespace="default", timeout=30):
         time.sleep(1)
     print(" ❌ Timed out waiting for cluster to be ready.")
     return False
+
+def run_kubectl(cmd):
+    try:
+        result = subprocess.run(
+            ["kubectl"] + cmd,
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        )
+        return result.stdout.decode()
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Error running {' '.join(cmd)}:")
+        print(e.stderr.decode())
+        sys.exit(1)
