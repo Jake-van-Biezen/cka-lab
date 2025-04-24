@@ -20,7 +20,7 @@ Each exercise spins up a **fresh Kubernetes cluster**, applies predefined **scaf
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR-USERNAME/cka-lab.git
+git clone https://github.com/jake-van-biezen/cka-lab.git
 cd cka-lab
 
 # (Optional) Create a virtual environment
