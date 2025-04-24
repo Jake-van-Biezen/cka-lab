@@ -28,11 +28,11 @@ env activate
 
 # Install dependencies
 poetry install
+```
 
 ---
 
-## Usage
-🚀 Usage
+## 🚀 Usage
 
 Make sure you have Docker and kind installed.
 
@@ -68,5 +68,6 @@ Tear down the cluster for a specific exercise:
 
 python cli.py cleanup troubleshooting/1
 
+```
 
 ```
