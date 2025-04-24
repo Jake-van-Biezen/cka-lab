@@ -1,6 +1,7 @@
 [project]
 name = "cka-lab"
 version = "0.1.0"
+package-mode = false
 description = ""
 authors = [
     {name = "Jake van Biezen",email = "jake1998@hotmail.nl"}
