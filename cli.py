@@ -1,3 +1,6 @@
+"""
+CLI for managing Kubernetes exercises using Kind.
+"""
 import importlib
 import os
 import re
@@ -38,6 +41,9 @@ def run(exercise: str):
 
 @app.command()
 def check(exercise_path: str):
+    """
+    Check the exercise and tear down the cluster if successful.
+    """
     typer.echo(f"✅ Checking {exercise_path}...")
     # Check if the exercise is running
     try:
@@ -58,13 +64,14 @@ def check(exercise_path: str):
     try:
         check_module = importlib.import_module(f"exercises.{exercise_mod}.check")
         if hasattr(check_module, "check"):
-            check = check_module.check()
-            if check:
+            check_succesful = check_module.check()
+            if check_succesful:
                 if typer.confirm("🎉 Check successful! Do you want to tear down the cluster?"):
                     cluster_name = f"cka-{re.sub('[^A-Za-z0-9]+', '', exercise_path)}"
                     typer.echo(f"🧹 Tearing down cluster '{cluster_name}'...")
                     try:
-                        subprocess.run(["kind", "delete", "cluster", "--name", cluster_name], check=True)
+                        subprocess.run(["kind", "delete", "cluster", "--name", cluster_name],
+                                       check=True)
                         typer.echo("✅ Cluster deleted.")
                     except subprocess.CalledProcessError as e:
                         typer.echo(f"❌ Failed to delete cluster: {e}")
@@ -76,7 +83,7 @@ def check(exercise_path: str):
         raise typer.Exit(code=1)
 
 @app.command()
-def list():
+def list_exercises():
     """
     List all available exercises.
     """
@@ -97,11 +104,14 @@ def list():
 
 @app.command()
 def info(exercise_path: str):
+    """
+    Show information about the given exercise.
+    """
     readme_path = Path(f"exercises/{exercise_path}/README.md")
     if not readme_path.exists():
         typer.echo("No README found.")
         raise typer.Exit()
-    typer.echo(readme_path.read_text())
+    typer.echo(readme_path.read_text(encoding="utf-8"))
 @app.command()
 def cleanup(exercise: str):
     """
