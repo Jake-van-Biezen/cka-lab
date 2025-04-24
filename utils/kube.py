@@ -1,4 +1,6 @@
-# utils/kube.py
+"""
+Utilities for managing Kubernetes clusters using Kind
+"""
 import subprocess
 import sys
 import time
@@ -8,17 +10,29 @@ import typer
 
 
 def run_cmd(cmd: list[str]):
+    """
+    Run a command in the shell and print the output
+    """
     typer.echo(f"🔧 Running: {' '.join(cmd)}")
     subprocess.run(cmd, check=True)
 
 def create_kind_cluster(name: str):
+    """
+    Create a Kind cluster with the given name
+    """
     run_cmd(["kind", "create", "cluster", "--name", name])
     wait_for_cluster_ready()
 
 def delete_kind_cluster(name: str):
+    """
+    Delete a Kind cluster with the given name
+    """
     run_cmd(["kind", "delete", "cluster", "--name", name])
 
 def apply_scaffold(exercise: str):
+    """
+    Apply the scaffold for the given exercise
+    """
     path = Path("exercises") / exercise / "scaffold.yaml"
     if not path.exists():
         typer.echo(f"❌ No scaffold found for {exercise}")
@@ -26,6 +40,9 @@ def apply_scaffold(exercise: str):
     run_cmd(["kubectl", "apply", "-f", str(path)])
 
 def wait_for_cluster_ready(namespace="default", timeout=30):
+    """
+    Wait for the Kind cluster to be ready
+    """
     print("⏳ Waiting for cluster to become ready...", end="", flush=True)
     for _ in range(timeout):
         try:
@@ -46,6 +63,9 @@ def wait_for_cluster_ready(namespace="default", timeout=30):
     return False
 
 def run_kubectl(cmd):
+    """
+    Run a kubectl command and return the output
+    """
     try:
         result = subprocess.run(
             ["kubectl"] + cmd,
