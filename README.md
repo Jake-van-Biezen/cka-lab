@@ -36,7 +36,7 @@ poetry install
 
 Make sure you have Docker and kind installed.
 
-Once the CLI is installed or cloned locally, you can run the following commands:
+Once the CLI is installed or cloned locally, you can run the following commands:  
 🏁 Run an Exercise
 
 Get a list of all available exercises, organized by domain:
