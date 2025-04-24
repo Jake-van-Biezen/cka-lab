@@ -23,9 +23,50 @@ Each exercise spins up a **fresh Kubernetes cluster**, applies predefined **scaf
 git clone https://github.com/jake-van-biezen/cka-lab.git
 cd cka-lab
 
-# (Optional) Create a virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
+# Create a virtual environment
+env activate
 
 # Install dependencies
-pip install -r requirements.txt
+poetry install
+
+---
+
+## Usage
+🚀 Usage
+
+Make sure you have Docker and kind installed.
+
+Once the CLI is installed or cloned locally, you can run the following commands:
+🏁 Run an Exercise
+
+Spin up a fresh Kubernetes cluster using kind and scaffold the resources for a specific exercise:
+
+python cli.py run troubleshooting/01-broken-service
+
+✅ Check an Exercise
+
+Run the check logic to verify if you've successfully completed the exercise:
+
+python cli.py check troubleshooting/01-broken-service
+
+If the check passes, you’ll be asked whether you want to delete the cluster.
+📚 List All Available Exercises
+
+Get a list of all available exercises, organized by domain:
+
+python cli.py list
+
+ℹ️ View Exercise Info
+
+Display the README for an exercise (if present):
+
+python cli.py info troubleshooting/1
+
+🧹 Manually Cleanup
+
+Tear down the cluster for a specific exercise:
+
+python cli.py cleanup troubleshooting/1
+
+
+```
