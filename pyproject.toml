@@ -1,0 +1,18 @@
+[project]
+name = "cka-lab"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Jake van Biezen",email = "jake1998@hotmail.nl"}
+]
+license = {text = "Apache-2.0"}
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "typer[all] (>=0.15.2,<0.16.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
