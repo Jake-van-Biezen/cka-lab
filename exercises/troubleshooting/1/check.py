@@ -22,7 +22,8 @@ def check():
     try:
         # Start port-forward in background
         cmd = f"kubectl port-forward service/nginx-service {local_port}:80"
-        process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, 
+        # pylint: disable=consider-using-with
+        process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE,
                                    stderr=subprocess.PIPE)
         def cleanup():
             if process:
@@ -34,15 +35,11 @@ def check():
             if response.status_code == 200 and "nginx" in response.text.lower():
                 print("✅ Service is correctly exposing nginx on port 80.")
                 return True
-            else:
-                print(f"❌ Got response code {response.status_code}, but nginx not detected.")
-                return False
+            print(f"❌ Got response code {response.status_code}, but nginx not detected.")
+            return False
         except requests.exceptions.ConnectionError:
             print("❌ Connection failed. nginx is not accessible on port 80.")
             return False
-    except Exception as e:
-        print(f"❌ Error testing connectivity: {e}")
-        return False
     finally:
         if process:
             process.terminate()
