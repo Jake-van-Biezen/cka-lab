@@ -41,33 +41,39 @@ Once the CLI is installed or cloned locally, you can run the following commands:
 
 Spin up a fresh Kubernetes cluster using kind and scaffold the resources for a specific exercise:
 
-python cli.py run troubleshooting/01-broken-service
+```python
+poetry run python cli.py run troubleshooting/1
+```
 
 ✅ Check an Exercise
 
 Run the check logic to verify if you've successfully completed the exercise:
 
-python cli.py check troubleshooting/01-broken-service
+```python
+poetry run python cli.py check troubleshooting/1
+```
 
 If the check passes, you’ll be asked whether you want to delete the cluster.
 📚 List All Available Exercises
 
 Get a list of all available exercises, organized by domain:
 
-python cli.py list
+```python
+poetry run python cli.py list
+```
 
 ℹ️ View Exercise Info
 
 Display the README for an exercise (if present):
 
+```python
 python cli.py info troubleshooting/1
+```
 
 🧹 Manually Cleanup
 
 Tear down the cluster for a specific exercise:
 
+```python
 python cli.py cleanup troubleshooting/1
-
-```
-
 ```
