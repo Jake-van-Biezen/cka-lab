@@ -1,4 +1,5 @@
 import importlib
+import os
 import re
 import subprocess
 from pathlib import Path
@@ -73,6 +74,26 @@ def check(exercise_path: str):
     except Exception as e:
         typer.echo(f"❌ Error: {e}")
         raise typer.Exit(code=1)
+
+@app.command()
+def list():
+    """
+    List all available exercises.
+    """
+    base_dir = "exercises"
+    if not os.path.isdir(base_dir):
+        typer.echo("❌ No exercises found.")
+        raise typer.Exit()
+
+    typer.echo("📚 Available exercises:\n")
+
+    for root, dirs, _ in os.walk(base_dir):
+        for d in dirs:
+            full_path = os.path.join(root, d)
+            check_path = os.path.join(full_path, "check.py")
+            if os.path.exists(check_path):
+                relative_path = os.path.relpath(full_path, base_dir)
+                typer.echo(f"• {relative_path.replace(os.sep, '/')}")
 
 @app.command()
 def info(exercise_path: str):
