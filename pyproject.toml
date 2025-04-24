@@ -9,7 +9,9 @@ license = {text = "Apache-2.0"}
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "typer[all] (>=0.15.2,<0.16.0)"
+    "typer[all] (>=0.15.2,<0.16.0)",
+    "rich (>=14.0.0,<15.0.0)",
+    "pyyaml (>=6.0.2,<7.0.0)"
 ]
 
 
