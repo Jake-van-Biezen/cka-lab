@@ -1,3 +1,6 @@
+"""
+Check for exercise 1
+"""
 import atexit
 import os
 import signal
@@ -5,32 +8,27 @@ import subprocess
 import time
 
 import requests
-from kubernetes import client, config
+from kubernetes import config
 
 
 def check():
+    """
+    Check if the nginx service is correctly exposing port 80.
+    """
     config.load_kube_config()
-    v1 = client.CoreV1Api()
-    
     # Use kubectl port-forward to test connectivity
     local_port = 8080
     process = None
-    
     try:
         # Start port-forward in background
         cmd = f"kubectl port-forward service/nginx-service {local_port}:80"
-        process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        
-        # Register cleanup function
+        process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, 
+                                   stderr=subprocess.PIPE)
         def cleanup():
             if process:
                 os.kill(process.pid, signal.SIGTERM)
         atexit.register(cleanup)
-        
-        # Give port-forward time to establish
         time.sleep(2)
-        
-        # Check if nginx is accessible
         try:
             response = requests.get(f"http://localhost:{local_port}", timeout=5)
             if response.status_code == 200 and "nginx" in response.text.lower():
@@ -42,7 +40,6 @@ def check():
         except requests.exceptions.ConnectionError:
             print("❌ Connection failed. nginx is not accessible on port 80.")
             return False
-            
     except Exception as e:
         print(f"❌ Error testing connectivity: {e}")
         return False
