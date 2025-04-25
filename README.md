@@ -27,7 +27,7 @@ cd cka-lab
 env activate
 
 # Install dependencies
-poetry install
+poetry install --no-root
 ```
 
 ---
