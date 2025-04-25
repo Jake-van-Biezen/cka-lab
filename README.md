@@ -42,7 +42,7 @@ Once the CLI is installed or cloned locally, you can run the following commands:
 Get a list of all available exercises, organized by domain:
 
 ```python
-poetry run python cli.py list
+poetry run python cli.py list-exercises
 ```
 
 Spin up a fresh Kubernetes cluster using kind and scaffold the resources for a specific exercise:
