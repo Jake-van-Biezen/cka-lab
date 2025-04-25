@@ -46,14 +46,14 @@ Get a list of all available exercises, organized by domain:
 ```python
 poetry run python cli.py list-exercises
 ```
-🏁 Run an Exercise
+🏁 Run an Exercise  
 Spin up a fresh Kubernetes cluster using kind and scaffold the resources for a specific exercise:
 
 ```python
 poetry run python cli.py run troubleshooting/1
 ```
 
-✅ Check an Exercise
+✅ Check an Exercise  
 
 Run the check logic to verify if you've successfully completed the exercise:
 
