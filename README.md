@@ -37,14 +37,16 @@ poetry install --no-root
 Make sure you have Docker and kind installed.
 
 Once the CLI is installed or cloned locally, you can run the following commands:  
-🏁 Run an Exercise
+
 
 Get a list of all available exercises, organized by domain:
+
+📚 List All Available Exercises  
 
 ```python
 poetry run python cli.py list-exercises
 ```
-
+🏁 Run an Exercise
 Spin up a fresh Kubernetes cluster using kind and scaffold the resources for a specific exercise:
 
 ```python
@@ -60,7 +62,7 @@ poetry run python cli.py check troubleshooting/1
 ```
 
 If the check passes, you’ll be asked whether you want to delete the cluster.
-📚 List All Available Exercises
+
 
 ℹ️ View Exercise Info
 
