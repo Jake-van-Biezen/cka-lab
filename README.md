@@ -39,9 +39,11 @@ Make sure you have Docker and kind installed.
 Once the CLI is installed or cloned locally, you can run the following commands:  
 
 
-Get a list of all available exercises, organized by domain:
+
 
 📚 List All Available Exercises  
+
+Get a list of all available exercises, organized by domain:
 
 ```python
 poetry run python cli.py list-exercises
