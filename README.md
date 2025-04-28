@@ -1,8 +1,11 @@
 # 🧪 cka-lab
 
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
+
 **cka-lab** is a CLI tool for creating and testing hands-on Kubernetes exercises, designed to help you (or your students) prepare for the [Certified Kubernetes Administrator (CKA)](https://www.cncf.io/certification/cka/) exam.
 
-Each exercise spins up a **fresh Kubernetes cluster**, applies predefined **scaffolded resources**, and can run **automated checks** to verify correctness — all from the command line.
+Each exercise spins up a **fresh Kubernetes cluster**, applies predefined **scaffolded resources**...
 
 ---
 
@@ -36,18 +39,16 @@ poetry install --no-root
 
 Make sure you have Docker and kind installed.
 
-Once the CLI is installed or cloned locally, you can run the following commands:  
+Once the CLI is installed or cloned locally, you can run the following commands:
 
-
-
-
-📚 List All Available Exercises  
+📚 List All Available Exercises
 
 Get a list of all available exercises, organized by domain:
 
 ```python
 poetry run python cli.py list-exercises
 ```
+
 🏁 Run an Exercise  
 Spin up a fresh Kubernetes cluster using kind and scaffold the resources for a specific exercise:
 
@@ -55,7 +56,7 @@ Spin up a fresh Kubernetes cluster using kind and scaffold the resources for a s
 poetry run python cli.py run troubleshooting/1
 ```
 
-✅ Check an Exercise  
+✅ Check an Exercise
 
 Run the check logic to verify if you've successfully completed the exercise:
 
@@ -64,7 +65,6 @@ poetry run python cli.py check troubleshooting/1
 ```
 
 If the check passes, you’ll be asked whether you want to delete the cluster.
-
 
 ℹ️ View Exercise Info
 
