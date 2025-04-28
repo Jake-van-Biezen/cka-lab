@@ -5,8 +5,7 @@
 
 **cka-lab** is a CLI tool for creating and testing hands-on Kubernetes exercises, designed to help you (or your students) prepare for the [Certified Kubernetes Administrator (CKA)](https://www.cncf.io/certification/cka/) exam.
 
-Each exercise spins up a **fresh Kubernetes cluster**, applies predefined **scaffolded resources**, and can run **automated checks** to verify correctness — all from the command line.
----
+Each exercise spins up a **fresh Kubernetes cluster**, applies predefined **scaffolded resources**, and can run **automated checks** to verify correctness — all from the command line.---
 
 ## 🚀 Features
 
